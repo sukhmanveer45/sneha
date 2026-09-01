@@ -72,3 +72,4 @@ print("Is a greater than b?", a > b)
 
 # Check if a is equal to b
 print("Is a equal to b?", a == b)
+print("Hello World")
