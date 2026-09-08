@@ -1,75 +1,258 @@
-print ("Hello World")
-# Variable Declaration and Types
-
-# Declare variable a and assign it the value 15
-a = 15
-
-# Declare variable b and assign it the value 12
-b = 12
-
-# Print the value of a
-print("Value of a:", a)
-
-# Print the data type of a
-print("Type of a:", type(a))
-
-# Print the value of b
-print("Value of b:", b)
-
-# Print the data type of b
-print("Type of b:", type(b))
+# ============================================
+# ICT105 - Lists, Loops & Tuples
+# ============================================
 
 
-# Basic Arithmetic Operations
+# --------------------------------------------
+# PART 1: LISTS
+# --------------------------------------------
 
-# Perform addition of a and b
-print("Addition:", a + b)
+courses = [
+    "Physics I",
+    "Calculus II",
+    "Biology I",
+    "Introduction to Programming",
+    "History I",
+    "Chemistry I",
+    "Microeconomics",
+    "Linear Algebra",
+    "Psychology I",
+    "Data Structures and Algorithms"
+]
 
-# Perform subtraction of b from a
-print("Subtraction:", a - b)
-
-# Perform multiplication of a and b
-print("Multiplication:", a * b)
-
-# Perform division of a by b
-print("Division:", a / b)
-
-
-# Using Variables and Type Casting
-
-# Divide a by b and convert the result to an integer
-c = int(a / b)
-
-# Print the value of c
-print("Value of c:", c)
-
-# Print the data type of c
-print("Type of c:", type(c))
-
-# Convert c from integer to float
-c = float(c)
-
-# Print the new value of c
-print("New value of c:", c)
-
-# Print the new data type of c
-print("New type of c:", type(c))
+# Print the original list
+print("Original list:")
+print(courses)
 
 
-# Working with Strings
-
-# Create a string message
-message = "The result of a divided by b is? "
-
-# Convert c to a string and join it with the message
-print(message + str(c))
+# Alphabetical order using sorted()
+print("\nAlphabetical order:")
+print(sorted(courses))
 
 
-# Using Comparison Operators
+# Reverse alphabetical order using sorted()
+print("\nReverse alphabetical order:")
+print(sorted(courses, reverse=True))
 
-# Check if a is greater than b
-print("Is a greater than b?", a > b)
 
-# Check if a is equal to b
-print("Is a equal to b?", a == b)
-print("Hello World")
+# --------------------------------------------
+# PART 2: reverse()
+# --------------------------------------------
+
+courses.reverse()
+
+print("\nList after reverse():")
+print(courses)
+
+
+# --------------------------------------------
+# PART 3: sort()
+# --------------------------------------------
+
+courses.sort()
+
+print("\nList after sort():")
+print(courses)
+
+
+# Reverse alphabetical order using sort()
+courses.sort(reverse=True)
+
+print("\nList after sort(reverse=True):")
+print(courses)
+
+
+# --------------------------------------------
+# PART 4: insert() and append()
+# --------------------------------------------
+
+# Add a course at the beginning
+courses.insert(0, "Introduction to Philosophy")
+
+# Add a course in the middle
+courses.insert(5, "English Composition I")
+
+# Add a course at the end
+courses.append("Discrete Mathematics")
+
+print("\nList after adding courses:")
+print(courses)
+
+
+# --------------------------------------------
+# PART 5: pop()
+# --------------------------------------------
+
+removed1 = courses.pop()
+removed2 = courses.pop()
+removed3 = courses.pop()
+removed4 = courses.pop()
+
+print("\nWithdrawn courses:")
+print(removed1)
+print(removed2)
+print(removed3)
+print(removed4)
+
+print("\nAvailable courses:")
+print(courses)
+
+
+# --------------------------------------------
+# PART 6: TUPLES AND LOOPS
+# --------------------------------------------
+
+course_tuples = [
+    (1, "Introduction to Programming"),
+    (2, "Calculus I"),
+    (3, "Data Structures and Algorithms"),
+    (4, "Linear Algebra"),
+    (5, "Physics I")
+]
+
+# Empty list
+course_names = []
+
+# Loop through the tuples
+for course_id, course_name in course_tuples:
+    course_names.append(course_name)
+
+print("\nCourse names from tuples:")
+print(course_names)
+
+
+# --------------------------------------------
+# PART 7: COURSE DEPARTMENT SEARCH
+# --------------------------------------------
+
+departments = [
+    [1, "Computer Science"],
+    [2, "Mathematics"],
+    [3, "Computer Science"],
+    [4, "Mathematics"],
+    [5, "Physics"],
+    [6, "Chemistry"],
+    [7, "Biology"],
+    [8, "Economics"],
+    [9, "Economics"],
+    [10, "Psychology"],
+    [11, "History"],
+    [12, "English"],
+    [13, "Philosophy"],
+    [14, "Mathematics"],
+    [15, "Computer Science"]
+]
+
+while True:
+
+    user_input = input(
+        "\nEnter Course ID (1-15), 0 to exit, or quit: "
+    )
+
+    # Exit using quit
+    if user_input.lower() == "quit":
+        print("Program ended.")
+        break
+
+    # Exit using 0
+    elif user_input == "0":
+        print("Program ended.")
+        break
+
+    # Check if input is a number
+    elif user_input.isdigit():
+
+        course_id = int(user_input)
+
+        # Check range
+        if 1 <= course_id <= 15:
+
+            found = False
+
+            # Search through departments
+            for course in departments:
+
+                if course[0] == course_id:
+
+                    print(
+                        "Course ID",
+                        course[0],
+                        "is in the",
+                        course[1],
+                        "department."
+                    )
+
+                    found = True
+                    break
+
+            if found == False:
+                print("Course ID was not found.")
+
+        else:
+            print(
+                "Invalid input. Please enter a number "
+                "from 1 to 15, 0, or quit."
+            )
+
+    else:
+        print(
+            "Invalid input. Please enter a number "
+            "from 1 to 15, 0, or quit."
+        )
+
+
+# --------------------------------------------
+# PART 8: COURSE INFORMATION RETRIEVAL SYSTEM
+# --------------------------------------------
+
+course_information = [
+    [1, "Introduction to Programming", "Computer Science", "None"],
+    [2, "Calculus I", "Mathematics", "None"],
+    [3, "Calculus II", "Mathematics", "Calculus I"],
+    [4, "Physics I", "Physics", "None"],
+    [5, "Data Structures and Algorithms",
+     "Computer Science", "Introduction to Programming"]
+]
+
+while True:
+
+    user_input = input(
+        "\nEnter Course ID (0 to exit or quit): "
+    )
+
+    # Exit the program
+    if user_input.lower() == "quit" or user_input == "0":
+        print("Program ended.")
+        break
+
+    # Check if input is a number
+    elif user_input.isdigit():
+
+        course_id = int(user_input)
+
+        found = False
+
+        # Search through course information
+        for course in course_information:
+
+            if course[0] == course_id:
+
+                print("\nCourse Information")
+                print("-------------------")
+                print("Course ID:", course[0])
+                print("Course Name:", course[1])
+                print("Department:", course[2])
+                print("Prerequisites:", course[3])
+
+                found = True
+                break
+
+        # If course doesn't exist
+        if found == False:
+            print("Course ID was not found.")
+
+    else:
+        print(
+            "Invalid input. Please enter a Course ID, "
+            "0, or quit."
+        )
